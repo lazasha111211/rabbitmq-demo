@@ -1,0 +1,23 @@
+
+spring:
+  application:
+    name: rabbitmq-consumer-demo
+  rabbitmq:
+    # 单点配置
+    #host: localhost
+    #port: 5672
+    # 集群的配置
+    addresses: 10.156.13.92:5672,10.156.13.93:5672,10.156.13.94:5672
+    username: rabbitmq
+    password: 123456
+    # 像mysql拥有数据库的概念并且可以指定用户对库和表等操作的权限。那RabbitMQ呢？RabbitMQ也有类似的权限管理。
+    # 在RabbitMQ中可以虚拟消息服务器VirtualHost，每个VirtualHost相当于一个相对独立的RabbitMQ服务器，
+    # 每个VirtualHost之间是相互隔离的。exchange、queue、message不能互通。 相当于mysql的db。
+    # Virtual Name一般以/开头
+    virtual-host: /
+    listener:
+      simple:
+        prefetch: 1               #设置一次处理一个消息
+        acknowledge-mode: manual  #设置消费端手动 ack
+        concurrency: 3            #设置同时有3个消费者消费
+        #消息接收确认，可选模式：NONE（不确认）、AUTO（自动确认）、MANUAL（手动确认）
