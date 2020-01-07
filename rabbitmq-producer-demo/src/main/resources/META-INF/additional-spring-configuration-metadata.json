@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.rabbitmq.publisher-confirm",
+      "type": "java.lang.String",
+      "description": "Description for spring.rabbitmq.publisher-confirm."
+  }
+] }
